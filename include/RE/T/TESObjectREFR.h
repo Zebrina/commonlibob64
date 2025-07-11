@@ -154,6 +154,9 @@ namespace RE
 		virtual void                    PairAnimationInitialization(const BSAnimGroupSequence* a_lastFinishedSequence);                                                                                                                                                    // 75
 		virtual void                    SendPositionPairingHandler();                                                                                                                                                                                                      // 76
 
+		[[nodiscard]] bool IsDisabled() const { return formFlags.all(TESForm::RecordFlags::kDisabled); }
+		[[nodiscard]] bool IsEnabled() const { return !IsDisabled(); }
+
 		bool GetInterior()
 		{
 			using func_t = decltype(&TESObjectREFR::GetInterior);
@@ -166,6 +169,18 @@ namespace RE
 			using func_t = decltype(&TESObjectREFR::GetWorldSpace);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetWorldSpace };
 			return func(this);
+		}
+
+		void MoveRefToNewSpace(TESObjectCELL* a_cell, TESWorldSpace* a_worldSpace)
+		{
+			static REL::Relocation<decltype(&TESObjectREFR::MoveRefToNewSpace)> func{ REL::ID(405551) };
+			func(this, a_cell, a_worldSpace);
+		}
+
+		void MoveToRef(TESObjectREFR* a_target, float a_offsetX = 0.0f, float a_offsetY = 0.0f, float a_offsetZ = 0.0f)
+		{
+			static REL::Relocation<decltype(&TESObjectREFR::MoveToRef)> func{ REL::ID(421478) };
+			func(this, a_target, a_offsetX, a_offsetY, a_offsetZ);
 		}
 
 		// members
@@ -189,6 +204,8 @@ namespace RE
 		TESContainer            chosenCreatures;                        // 110
 		bool                    isContainerInit;                        // 130
 		std::uint8_t            lastLoadFileCompileIndex;               // 131
+		void*                   newInPatch1_1_138;                      // 138 HighProcess
+		float                   newInPatch1_1_140;                      // 140
 	};
-	static_assert(sizeof(TESObjectREFR) == 0x138);
+	static_assert(sizeof(TESObjectREFR) == 0x148);
 }

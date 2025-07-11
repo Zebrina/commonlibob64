@@ -49,6 +49,12 @@ namespace RE
 		virtual bool GetMapNameForLocation(BSString& a_mapName, NiPoint3 a_worldLocation);                                                                                   // 3C
 		virtual void GetGrassForLocation(NiPoint2 a_minWorldLocation, NiPoint2 a_maxWorldLocation, const TESGrassAreaParam* a_grassParams, std::uint32_t a_numGrassParams);  // 3D
 
+		[[nodiscard]] TESObjectCELL* GetCell(int a_subBlockX, int a_subBlockY)
+		{
+			REL::Relocation<decltype(&TESWorldSpace::GetCell)> func{ REL::ID(409777) };
+			func(this, a_subBlockX, a_subBlockY);
+		}
+
 		// members
 		NiTPointerMap<std::int32_t, TESObjectCELL*>*                 cellMap;                  // 060
 		TESObjectCELL*                                               persistentCell;           // 068

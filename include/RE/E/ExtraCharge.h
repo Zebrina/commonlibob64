@@ -11,7 +11,7 @@ namespace RE
 
 		virtual ~ExtraCharge();
 
-		float charge; // 18
+		float charge;  // 18
 	};
 
 	static_assert(offsetof(ExtraCharge, charge) == 0x18);

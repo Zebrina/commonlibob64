@@ -66,6 +66,12 @@ namespace RE
 		virtual void ProcessPairItem() override;    // 01
 		virtual void ProcessUnpairItem() override;  // 02
 
+		[[nodiscard]] TESWorldSpace* GetWorldSpace() const
+		{
+			static REL::Relocation<decltype(&TESObjectCELL::GetWorldSpace)> func{ REL::ID(407923) };
+			return func(this);
+		}
+
 		// members
 		bool                         cellFullyPaired;               // 60
 		BSSimpleList<TESObjectREFR*> prePlacedActorStillNotPaired;  // 68

@@ -33,35 +33,35 @@ namespace RE
 		virtual void          OnModelAttached() override;                                                    // 6F
 
 		// add
-		virtual void                    SendPositionPairingHandler();                                             // 77
-		virtual bool                    MoveToHigh();                                                             // 78
-		virtual bool                    MoveToLow();                                                              // 79
-		virtual bool                    MoveToMiddleLow();                                                        // 7A
-		virtual bool                    MoveToMiddleHigh();                                                       // 7B
-		virtual bhkCharacterController* Move(float a_deltaTime, NiPoint3& a_deltaMove, std::uint32_t a_moveDir);  // 7C
-		virtual bhkCharacterController* Jump();                                                                   // 7D
-		virtual void                    SetAvoidanceDisabled(bool a_value);                                       // 7E
-		virtual void                    Process(float a_delta);                                                   // 7F
-		virtual bool                    ChangeProcessLevel();                                                     // 80
-		virtual bool                    DetachCharController();                                                   // 81
-		virtual void                    SetPosition(const NiPoint3& a_pos);                                       // 82
-		virtual void                    GetLinearVelocity(NiPoint3& a_vel);                                       // 83
-		virtual void                    EvaluateDetection(float a_number);                                        // 84
-		virtual float                   GetDetectionTimer();                                                      // 85
-		virtual void                    ReduceDetectionTimer();                                                   // 86
-		virtual float                   GetHeading();                                                             // 87
-		virtual void                    SetHeading(TESObjectREFR* a_targetReference);                             // 88
-		virtual void                    SetHeading(float a_angle);                                                // 89
-		virtual void                    SetSize(float a_radius);                                                  // 8A
-		virtual bool                    GetRunsInLow();                                                           // 8B
-		virtual float                   GetAcrobatics();                                                          // 8C
-		virtual bool                    IsDying();                                                                // 8D
-		virtual bool                    IsTransient();                                                            // 8E
-		virtual void                    SetDisplayGeometry(bool a_value);                                         // 8F
+		//virtual void                    SendPositionPairingHandler();                                             // 77
+		virtual bool                    MoveToHigh();                                                             // 77
+		virtual bool                    MoveToLow();                                                              // 78
+		virtual bool                    MoveToMiddleLow();                                                        // 79
+		virtual bool                    MoveToMiddleHigh();                                                       // 7A
+		virtual bhkCharacterController* Move(float a_deltaTime, NiPoint3& a_deltaMove, std::uint32_t a_moveDir);  // 7B
+		virtual bhkCharacterController* Jump();                                                                   // 7C
+		virtual void                    SetAvoidanceDisabled(bool a_value);                                       // 7D
+		virtual void                    Process(float a_delta);                                                   // 7E
+		virtual bool                    ChangeProcessLevel();                                                     // 7F
+		virtual bool                    DetachCharController();                                                   // 80
+		virtual void                    SetPosition(const NiPoint3& a_pos);                                       // 81
+		virtual void                    GetLinearVelocity(NiPoint3& a_vel);                                       // 82
+		virtual void                    EvaluateDetection(float a_number);                                        // 83
+		virtual float                   GetDetectionTimer();                                                      // 84
+		virtual void                    ReduceDetectionTimer();                                                   // 85
+		virtual float                   GetHeading();                                                             // 86
+		virtual void                    SetHeading(TESObjectREFR* a_targetReference);                             // 87
+		virtual void                    SetHeading(float a_angle);                                                // 88
+		virtual void                    SetSize(float a_radius);                                                  // 89
+		virtual bool                    GetRunsInLow();                                                           // 8A
+		virtual float                   GetAcrobatics();                                                          // 8B
+		virtual bool                    IsDying();                                                                // 8C
+		virtual bool                    IsTransient();                                                            // 8D
+		virtual void                    SetDisplayGeometry(bool a_value);                                         // 8E
 
 		// members
-		BaseProcess* currentProcess;          // 138
-		float        lastCollisionCheckTime;  // 140
+		BaseProcess* currentProcess;          // 148
+		float        lastCollisionCheckTime;  // 150
 	};
-	static_assert(sizeof(MobileObject) == 0x148);
+	static_assert(sizeof(MobileObject) == 0x158);
 }
