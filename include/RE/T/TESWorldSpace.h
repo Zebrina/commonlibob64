@@ -50,6 +50,13 @@ namespace RE
 		virtual bool GetMapNameForLocation(BSString& a_mapName, NiPoint3 a_worldLocation);                                                                                   // 3C
 		virtual void GetGrassForLocation(NiPoint2 a_minWorldLocation, NiPoint2 a_maxWorldLocation, const TESGrassAreaParam* a_grassParams, std::uint32_t a_numGrassParams);  // 3D
 
+		static std::int32_t WorldAxisToCellMapAxis(float a_value) { return (std::int32_t)a_value >> 12; }
+
+		TESObjectCELL* GetCell(std::int32_t a_cellGridX, std::int32_t a_cellGridY);
+		TESObjectCELL* GetCell(const NiPoint3& a_location);
+		TESObjectCELL* TryGetCell(std::int32_t a_cellGridX, std::int32_t a_cellGridY) const;
+		TESObjectCELL* TryGetCell(const NiPoint3& a_location) const;
+
 		// members
 		NiTPointerMap<std::int32_t, TESObjectCELL*>*                 cellMap;                  // 060
 		TESObjectCELL*                                               persistentCell;           // 068
@@ -76,4 +83,31 @@ namespace RE
 		std::int32_t                                                 distantLODFlags;          // 184
 	};
 	static_assert(sizeof(TESWorldSpace) == 0x188);
+}
+
+namespace RE
+{
+    inline TESObjectCELL* TESWorldSpace::GetCell(std::int32_t a_cellGridX, std::int32_t a_cellGridY)
+    {
+        using func_t = TESObjectCELL* (TESWorldSpace::*)(std::int32_t, std::int32_t);
+        static REL::Relocation<func_t> func{ ID::TESWorldSpace::GetCell };
+        return func(this, a_cellGridX, a_cellGridY);
+    }
+
+    inline TESObjectCELL* TESWorldSpace::GetCell(const NiPoint3& a_location)
+    {
+        return GetCell(WorldAxisToCellMapAxis(a_location.x), WorldAxisToCellMapAxis(a_location.y));
+    }
+
+    inline TESObjectCELL* TESWorldSpace::TryGetCell(std::int32_t a_cellGridX, std::int32_t a_cellGridY) const
+    {
+        using func_t = TESObjectCELL* (TESWorldSpace::*)(std::int32_t, std::int32_t) const;
+        static REL::Relocation<func_t> func{ ID::TESWorldSpace::TryGetCell };
+        return func(this, a_cellGridX, a_cellGridY);
+    }
+
+    inline TESObjectCELL* TESWorldSpace::TryGetCell(const NiPoint3& a_location) const
+    {
+        return TryGetCell(WorldAxisToCellMapAxis(a_location.x), WorldAxisToCellMapAxis(a_location.y));
+    }
 }

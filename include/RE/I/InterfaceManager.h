@@ -21,6 +21,7 @@ namespace RE
 	class InterfaceManager
 	{
 	public:
+		using MessageCallback_t = void (*)();
 		using Result_t = void (*)();
 
 		class Timer
@@ -41,6 +42,26 @@ namespace RE
 			static REL::Relocation<func_t> func{ ID::InterfaceManager::GetInstance };
 			return func(a_create, a_initialLoad);
 		}
+
+		static constexpr const char* LOC_HC_CANCEL{ "LOC_HC_MenuGamesettings_sCancel" };
+		static constexpr const char* LOC_HC_CONTINUE{ "LOC_HC_MenuGamesettings_sContinue" };
+		static constexpr const char* LOC_HC_NO{ "LOC_HC_MenuGamesettings_sNo" };
+		static constexpr const char* LOC_HC_YES{ "LOC_HC_MenuGamesettings_sYes" };
+
+		enum MESSAGE_TYPE : std::int32_t
+		{
+			Subtitle = 0,
+			Notification = 1,
+		};
+        
+		static std::int32_t GetLastMessageButtonClicked();
+
+		static bool ShowMessage(const char* a_message, float* a_unk2, MESSAGE_TYPE a_type = Notification, float a_duration = -1.0f);
+		static bool ShowMessage(const char* a_message, MESSAGE_TYPE a_type = Notification, float a_duration = -1.0f);
+        template<typename ...Args>
+		static bool ShowMessageBox(const char* a_message, MessageCallback_t a_callback, std::int32_t a_firstResult, const char* a_firstOption = LOC_HC_CONTINUE, Args... a_additionalOptions);
+		template <typename... Args>
+		static bool ShowMessageBox(const char* a_message, MessageCallback_t a_callback = nullptr, const char* a_firstOption = LOC_HC_CONTINUE, Args... a_additionalOptions);
 
 		// members
 		NiPointer<SceneGraph>         sceneGraph;                // 000
@@ -115,4 +136,39 @@ namespace RE
 		Timer*                        pTimers;                   // 1D8
 	};
 	static_assert(sizeof(InterfaceManager) == 0x1E0);
+}
+
+namespace RE {
+    inline std::int32_t InterfaceManager::GetLastMessageButtonClicked()
+    {
+        using func_t = decltype(GetLastMessageButtonClicked);
+        static REL::Relocation<func_t> func{ ID::InterfaceManager::GetLastMessageButtonClicked };
+        return func();
+    }
+
+    template<typename ...Args>
+    inline bool InterfaceManager::ShowMessageBox(const char* a_message, MessageCallback_t a_callback, std::int32_t a_firstResult, const char* a_firstOption, Args... a_additionalOptions)
+    {
+        using func_t = bool (*)(const char*, MessageCallback_t, std::int32_t, const char*, ...);
+        static func_t func = REL::Relocation<func_t>(ID::InterfaceManager::ShowMessage).get();
+        return func(a_message, a_callback, a_firstResult, a_firstOption, a_additionalOptions..., 0);
+    }
+
+    template <typename... Args>
+    inline bool InterfaceManager::ShowMessageBox(const char* a_message, MessageCallback_t a_callback, const char* a_firstOption, Args... a_additionalOptions)
+    {
+        return ShowMessageBox(a_message, a_callback, 0, a_firstOption, a_additionalOptions...);
+    }
+
+    inline bool InterfaceManager::ShowMessage(const char* a_message, float* a_unk2, MESSAGE_TYPE a_type, float a_duration)
+    {
+        using func_t = bool (*)(const char*, float*, MESSAGE_TYPE, float);
+        static REL::Relocation<func_t> func{ ID::InterfaceManager::ShowNotification };
+        return func(a_message, a_unk2, a_type, a_duration);
+    }
+
+    inline bool InterfaceManager::ShowMessage(const char* a_message, MESSAGE_TYPE a_type, float a_duration)
+    {
+        return ShowMessage(a_message, nullptr, a_type, a_duration);
+    }
 }

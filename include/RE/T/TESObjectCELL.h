@@ -7,6 +7,7 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESMemContextForm.h"
+#include "RE/T/TESWorldSpace.h"
 
 namespace RE
 {
@@ -65,6 +66,13 @@ namespace RE
 		virtual bool ShouldBePaired() override;     // 00
 		virtual void ProcessPairItem() override;    // 01
 		virtual void ProcessUnpairItem() override;  // 02
+
+		[[nodiscard]] TESWorldSpace* GetWorldSpace() const
+		{
+			using func_t = decltype(&TESObjectCELL::GetWorldSpace);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetWorldSpace };
+			return func(this);
+		}
 
 		// members
 		bool                         cellFullyPaired;               // 60

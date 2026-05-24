@@ -188,7 +188,7 @@ namespace RE
 		[[nodiscard]] bool IsAmmo() const noexcept { return Is(FormType::Ammo); }
 		[[nodiscard]] bool IsArmor() const noexcept { return Is(FormType::Armor); }
 		[[nodiscard]] bool IsBook() const noexcept { return Is(FormType::Book); }
-		[[nodiscard]] bool IsDeleted() const noexcept { return (GetFormFlags() & RecordFlags::kDeleted) != 0; }
+		[[nodiscard]] bool IsDeleted() const noexcept { return GetFormFlags().all(RecordFlags::kDeleted); }
 		[[nodiscard]] bool IsDynamicForm() const noexcept { return GetFormID() >= 0xFF000000; }
 		[[nodiscard]] bool IsGold() const noexcept { return GetFormID() == 0x0000000F; }
 		[[nodiscard]] bool IsKey() const noexcept { return Is(FormType::KeyMaster); }
@@ -203,6 +203,7 @@ namespace RE
 			return (IsNot(a_args) && ...);
 		}
 
+		[[nodiscard]] bool IsEnchanted() const;
 		[[nodiscard]] bool IsPlayer() const noexcept { return GetFormID() == 0x00000007; }
 		[[nodiscard]] bool IsPlayerRef() const noexcept { return GetFormID() == 0x00000014; }
 		[[nodiscard]] bool IsSoulGem() const noexcept { return Is(FormType::SoulGem); }
@@ -227,11 +228,11 @@ namespace RE
 		}
 
 		// members
-		REX::TEnum<FormType, std::uint8_t> formType;    // 08
-		std::uint32_t                      formFlags;   // 0C
-		TESFormID                          formID;      // 10
-		BSSimpleList<TESFile*>             files;       // 18
-		ExportTESForm*                     exportForm;  // 28
+		REX::Enum<FormType, std::uint8_t>                    formType;    // 08
+		REX::EnumSet<RecordFlags::RecordFlag, std::uint32_t> formFlags;   // 0C
+		TESFormID                                            formID;      // 10
+		BSSimpleList<TESFile*>                               files;       // 18
+		ExportTESForm*                                       exportForm;  // 28
 	};
 	static_assert(sizeof(TESForm) == 0x30);
 }

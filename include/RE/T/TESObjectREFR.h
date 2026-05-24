@@ -154,6 +154,9 @@ namespace RE
 		virtual void                    PairAnimationInitialization(const BSAnimGroupSequence* a_lastFinishedSequence);                                                                                                                                                    // 75
 		virtual void                    SendPositionPairingHandler();                                                                                                                                                                                                      // 76
 
+		[[nodiscard]] bool IsDisabled() const noexcept { return formFlags.all(TESForm::RecordFlags::kDisabled); }
+		[[nodiscard]] bool IsEnabled() const noexcept { return !IsDisabled(); }
+
 		bool GetInterior()
 		{
 			using func_t = decltype(&TESObjectREFR::GetInterior);
@@ -166,6 +169,13 @@ namespace RE
 			using func_t = decltype(&TESObjectREFR::GetWorldSpace);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetWorldSpace };
 			return func(this);
+		}
+
+		void MoveToRefIfLoaded(TESObjectREFR* a_target, float a_offsetX = 0.0f, float a_offsetY = 0.0f, float a_offsetZ = 0.0f)
+		{
+			using func_t = decltype(&TESObjectREFR::MoveToRefIfLoaded);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::MoveToRefIfLoaded };
+			func(this, a_target, a_offsetX, a_offsetY, a_offsetZ);
 		}
 
 		// members
