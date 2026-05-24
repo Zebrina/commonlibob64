@@ -267,3 +267,5 @@
 #include "RE/N/NiTMapBase.h"
 #include "RE/N/NiTPointerListBase.h"
 #include "RE/N/NiTStringMap.h"
+#include "RE/H/HighProcess.h"
+#include "RE/I/InventoryEntryData.h"
