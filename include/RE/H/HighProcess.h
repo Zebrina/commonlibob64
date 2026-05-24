@@ -163,7 +163,6 @@ namespace RE
 		std::uint64_t unk268[1];
 		std::uint8_t  unk270;  // 270
 
-
 		// Not aligned yet zzzzz
 		std::uint32_t unk2D4;  // 2D4
 		std::uint32_t unk348;  // 348
