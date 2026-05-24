@@ -269,3 +269,5 @@
 #include "RE/N/NiTStringMap.h"
 #include "RE/H/HighProcess.h"
 #include "RE/I/InventoryEntryData.h"
+#include "RE/B/BaseProcess.h"
+#include "RE/P/PackageTarget.h"

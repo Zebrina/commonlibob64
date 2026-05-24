@@ -20,6 +20,8 @@ namespace RE
 		[[nodiscard]] InventoryChanges*          GetInventoryChanges() const { return changes; }
 		[[nodiscard]] BSSimpleList<ItemChange*>* GetItemChanges() const { return changes && changes->list ? changes->list : nullptr; }
 		[[nodiscard]] TESObjectREFR*             GetOwner() const { return changes ? changes->owner : nullptr; }
+		[[nodiscard]] float                      GetTotalWeight() const { return changes ? changes->totalWeight : 0.0f; }
+		[[nodiscard]] float                      GetWornWeight() const { return changes ? changes->wornWeight : 0.0f; }
 
 		// members
 		InventoryChanges* changes;  // 018
