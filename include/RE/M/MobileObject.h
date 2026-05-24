@@ -31,9 +31,9 @@ namespace RE
 		virtual void          MoveHavok(bool a_forceRecurse) override;                                       // 64
 		virtual void          SetParentCell(TESObjectCELL* a_cell) override;                                 // 6B
 		virtual void          OnModelAttached() override;                                                    // 6F
-        
+
 		// add
-		virtual void          SendPositionPairingHandler();                                                       // 76
+		virtual void                    SendPositionPairingHandler();                                             // 76
 		virtual bool                    MoveToHigh();                                                             // 77
 		virtual bool                    MoveToLow();                                                              // 78
 		virtual bool                    MoveToMiddleLow();                                                        // 79

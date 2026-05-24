@@ -87,27 +87,27 @@ namespace RE
 
 namespace RE
 {
-    inline TESObjectCELL* TESWorldSpace::GetCell(std::int32_t a_cellGridX, std::int32_t a_cellGridY)
-    {
-        using func_t = TESObjectCELL* (TESWorldSpace::*)(std::int32_t, std::int32_t);
-        static REL::Relocation<func_t> func{ ID::TESWorldSpace::GetCell };
-        return func(this, a_cellGridX, a_cellGridY);
-    }
+	inline TESObjectCELL* TESWorldSpace::GetCell(std::int32_t a_cellGridX, std::int32_t a_cellGridY)
+	{
+		using func_t = TESObjectCELL* (TESWorldSpace::*)(std::int32_t, std::int32_t);
+		static REL::Relocation<func_t> func{ ID::TESWorldSpace::GetCell };
+		return func(this, a_cellGridX, a_cellGridY);
+	}
 
-    inline TESObjectCELL* TESWorldSpace::GetCell(const NiPoint3& a_location)
-    {
-        return GetCell(WorldAxisToCellMapAxis(a_location.x), WorldAxisToCellMapAxis(a_location.y));
-    }
+	inline TESObjectCELL* TESWorldSpace::GetCell(const NiPoint3& a_location)
+	{
+		return GetCell(WorldAxisToCellMapAxis(a_location.x), WorldAxisToCellMapAxis(a_location.y));
+	}
 
-    inline TESObjectCELL* TESWorldSpace::TryGetCell(std::int32_t a_cellGridX, std::int32_t a_cellGridY) const
-    {
-        using func_t = TESObjectCELL* (TESWorldSpace::*)(std::int32_t, std::int32_t) const;
-        static REL::Relocation<func_t> func{ ID::TESWorldSpace::TryGetCell };
-        return func(this, a_cellGridX, a_cellGridY);
-    }
+	inline TESObjectCELL* TESWorldSpace::TryGetCell(std::int32_t a_cellGridX, std::int32_t a_cellGridY) const
+	{
+		using func_t = TESObjectCELL* (TESWorldSpace::*)(std::int32_t, std::int32_t) const;
+		static REL::Relocation<func_t> func{ ID::TESWorldSpace::TryGetCell };
+		return func(this, a_cellGridX, a_cellGridY);
+	}
 
-    inline TESObjectCELL* TESWorldSpace::TryGetCell(const NiPoint3& a_location) const
-    {
-        return TryGetCell(WorldAxisToCellMapAxis(a_location.x), WorldAxisToCellMapAxis(a_location.y));
-    }
+	inline TESObjectCELL* TESWorldSpace::TryGetCell(const NiPoint3& a_location) const
+	{
+		return TryGetCell(WorldAxisToCellMapAxis(a_location.x), WorldAxisToCellMapAxis(a_location.y));
+	}
 }

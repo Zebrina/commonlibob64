@@ -130,7 +130,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetInterior{ 405453 };
 		inline constexpr REL::ID GetWorldSpace{ 405508 };
 		inline constexpr REL::ID MoveRefToNewSpace{ 405551 };
-		inline constexpr REL::ID MoveToRefIfLoaded { 421478 };
+		inline constexpr REL::ID MoveToRefIfLoaded{ 421478 };
 	}
 
 	namespace TESWorldSpace

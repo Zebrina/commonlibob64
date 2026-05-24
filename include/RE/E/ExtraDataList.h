@@ -28,7 +28,7 @@ namespace RE
 
 namespace RE
 {
-    inline void ExtraDataList::RemoveAllCopyableExtra()
+	inline void ExtraDataList::RemoveAllCopyableExtra()
 	{
 		using func_t = decltype(&ExtraDataList::RemoveAllCopyableExtra);
 		static REL::Relocation<func_t> func{ ID::ExtraDataList::RemoveAllCopyableExtra };
