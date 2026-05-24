@@ -7,8 +7,7 @@ namespace RE
 	class PackageTarget
 	{
 	public:
-
 		std::uint64_t unk00[1];
-		Actor*        target; // 08
+		Actor*        target;  // 08
 	};
 }

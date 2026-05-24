@@ -233,6 +233,7 @@
 #include "RE/P/PlayerCharacter.h"
 #include "RE/P/PackageList.h"
 #include "RE/P/PlayerDeathInfos.h"
+#include "RE/P/PackageTarget.h"
 #include "RE/P/PackageSchedule.h"
 #include "RE/P/PACKAGE_PROCEDURE_TYPE.h"
 #include "RE/G/GameSettingCollection.h"
