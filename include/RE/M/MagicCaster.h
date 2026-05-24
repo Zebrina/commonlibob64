@@ -41,11 +41,11 @@ namespace RE
 		virtual ActiveEffect*  CreateActiveEffect(MagicItem* a_spell, EffectItem* a_effectItem, TESBoundObject* a_source);                            // 11
 
 		// members
-		MagicLight*      light;           // 008
-		State            state;           // 010
-		MagicProjectile* usedProjectile;  // 018
-		std::byte        unk020[8];       // 020 - new
-		std::byte        unk028[8];       // 028 - new
+		MagicLight*                     light;                // 008
+		State                           state;                // 010
+		std::uint64_t                   unk18;                // 018 - new in patch 1.1
+		MagicProjectile*                usedProjectile;       // 020
+		BSSimpleList<MagicProjectile*>* prevUsedProjectiles;  // 028 - new in patch 1.1
 	};
 	static_assert(sizeof(MagicCaster) == 0x30);
 }

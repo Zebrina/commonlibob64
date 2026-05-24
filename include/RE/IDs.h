@@ -24,6 +24,18 @@ namespace RE::ID
 		inline constexpr REL::ID Singleton{ 1669511 };
 	}
 
+	namespace ExtraDataList
+	{
+		inline constexpr REL::ID CompareList{ 407189 };
+		inline constexpr REL::ID CompareListForContainer{ 407190 };
+		inline constexpr REL::ID CopyListForContainer{ 407192 };
+		inline constexpr REL::ID CopyListForReference{ 407193 };
+		inline constexpr REL::ID DuplicateExtraListForContainer{ 407194 };
+		inline constexpr REL::ID RemoveAllCopyableExtra{ 407191 };
+		inline constexpr REL::ID RemoveNonPersistentCellData{ 407317 };
+		inline constexpr REL::ID Save{ 407337 };
+	}
+
 	namespace FORM_ENUM_STRING
 	{
 		inline constexpr REL::ID FormEnumString{ 1462745 };
@@ -42,6 +54,9 @@ namespace RE::ID
 	namespace InterfaceManager
 	{
 		inline constexpr REL::ID GetInstance{ 406444 };
+		inline constexpr REL::ID GetLastMessageButtonClicked{ 405054 };
+		inline constexpr REL::ID ShowMessage{ 405031 };
+		inline constexpr REL::ID ShowNotification{ 405111 };
 	}
 
 	namespace MapMenu
@@ -105,10 +120,23 @@ namespace RE::ID
 		inline constexpr REL::ID GetFullName{ 405447 };
 	}
 
+	namespace TESObjectCELL
+	{
+		inline constexpr REL::ID GetWorldSpace{ 407923 };
+	}
+
 	namespace TESObjectREFR
 	{
 		inline constexpr REL::ID GetInterior{ 405453 };
 		inline constexpr REL::ID GetWorldSpace{ 405508 };
+		inline constexpr REL::ID MoveRefToNewSpace{ 405551 };
+		inline constexpr REL::ID MoveToRefIfLoaded{ 421478 };
+	}
+
+	namespace TESWorldSpace
+	{
+		inline constexpr REL::ID GetCell{ 409777 };
+		inline constexpr REL::ID TryGetCell{ 409753 };
 	}
 
 	namespace Tile
